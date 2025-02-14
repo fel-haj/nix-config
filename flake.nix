@@ -1,0 +1,41 @@
+{
+  description = "NixOS & Nix-darwin flake configuration";
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # hyprland.url = "github:hyprwm/Hyprland";
+  };
+
+  outputs = { nixpkgs, nix-darwin, ... }@inputs:
+  let
+    mkSystem = import ./lib/mksystem.nix {
+      inherit nixpkgs inputs;
+    };
+  in {
+    nixosConfigurations.nixos-desktop = mkSystem {
+      system    = "x86_64-linux";
+      hostName  = "nixos-desktop";
+      user      = "fel-haj";
+      userEmail = "felix.hajek@icloud.com";
+    };
+
+    darwinConfigurations.macbook-x86 = mkSystem {
+      system    = "x86_64-darwin";
+      hostName  = "Felix-MBP-2020";
+      user      = "felix";
+      userEmail = "felix.hajek@icloud.com";
+      darwin    = true;
+    };
+  };
+}
