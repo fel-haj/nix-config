@@ -8,9 +8,13 @@
 
   home.packages = with pkgs; [
     # utils
+    direnv
     fzf
     ripgrep
     tmux
+
+    # devops
+    terraform
   ] ++ (lib.optionals (!darwin) [
     clang
     firefox

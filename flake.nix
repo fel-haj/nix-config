@@ -37,5 +37,13 @@
       userEmail = "felix.hajek@icloud.com";
       darwin    = true;
     };
+
+    darwinConfigurations.macbook-aarch64 = mkSystem {
+      system    = "aarch64-darwin";
+      hostName  = "Felix-MBA-M2";
+      user      = "felix";
+      userEmail = "felix.hajek@icloud.com";
+      darwin    = true;
+    };
   };
 }
