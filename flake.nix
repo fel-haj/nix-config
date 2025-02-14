@@ -14,7 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = { nixpkgs, nix-darwin, ... }@inputs:
@@ -22,27 +22,29 @@
     mkSystem = import ./lib/mksystem.nix {
       inherit nixpkgs inputs;
     };
+    user      = "felix";
+    userEmail = "felix.hajek@icloud.com"
   in {
     nixosConfigurations.nixos-desktop = mkSystem {
       system    = "x86_64-linux";
       hostName  = "nixos-desktop";
-      user      = "fel-haj";
-      userEmail = "felix.hajek@icloud.com";
+      user      = user;
+      userEmail = userEmail;
     };
 
     darwinConfigurations.macbook-x86 = mkSystem {
       system    = "x86_64-darwin";
       hostName  = "Felix-MBP-2020";
-      user      = "felix";
-      userEmail = "felix.hajek@icloud.com";
+      user      = user;
+      userEmail = userEmail;
       darwin    = true;
     };
 
     darwinConfigurations.macbook-aarch64 = mkSystem {
       system    = "aarch64-darwin";
       hostName  = "Felix-MBA-M2";
-      user      = "felix";
-      userEmail = "felix.hajek@icloud.com";
+      user      = user;
+      userEmail = userEmail;
       darwin    = true;
     };
   };

@@ -84,5 +84,6 @@ in {
     ls = "eza";
     lt = "eza --tree --level=2";
     rebuildx86 = if darwin then "darwin-${flake-rebuild}#macbook-x86" else "nixos-${flake-rebuild}#nixos-desktop";
+    rebuild = "darwin-${flake-rebuild}#macbook-aarch64";
   };
 }
