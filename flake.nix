@@ -23,7 +23,7 @@
       inherit nixpkgs inputs;
     };
     user      = "felix";
-    userEmail = "felix.hajek@icloud.com"
+    userEmail = "felix.hajek@icloud.com";
   in {
     nixosConfigurations.nixos-desktop = mkSystem {
       system    = "x86_64-linux";

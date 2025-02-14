@@ -71,7 +71,7 @@
       };
     };
   
-    starship = lib.mkIf darwin {
+    starship = {
       enable = true;
       enableZshIntegration = true;
     };

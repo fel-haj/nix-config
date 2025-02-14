@@ -10,6 +10,5 @@
     home = "/home/${user}";
     extraGroups = [ "wheel" ];
     shell = pkgs.zsh;
-    initialPassword = "init";
   };
 }

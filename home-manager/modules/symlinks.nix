@@ -13,6 +13,9 @@ in
     "${conf}/nvim" = {
       source = symlink "${dot}/nvim";
     };
+      "${conf}/starship" = {
+        source = symlink "${dot}/starship";
+      };
     "${conf}/tmux" = {
       source = symlink "${dot}/tmux";
     };
@@ -20,9 +23,6 @@ in
     (lib.mkIf darwin {
       "${conf}/aerospace" = {
         source = symlink "${dot}/aerospace";
-      };
-      "${conf}/starship" = {
-        source = symlink "${dot}/starship";
       };
     })
   ];
