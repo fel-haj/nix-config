@@ -77,6 +77,10 @@ in {
 
       # Remove / to not be part of words
       WORDCHARS='~!#$%^&*(){}[]<>?.+;-'
+
+      if uwsm check may-start; then
+        exec uwsm start hyprland
+      fi
     '';
   };
 

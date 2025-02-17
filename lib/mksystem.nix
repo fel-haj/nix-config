@@ -8,7 +8,7 @@
 }:
 
 let
-  hostConfig = ../hosts/${if darwin then "macbook" else hostName}.nix;
+  hostConfig = ../hosts/${if darwin then "darwin" else "nixos/${hostName}"}/configuration.nix;
   userOSConfig = ../user/${if darwin then "darwin" else "nixos"}.nix;
   userHMConfig = ../home-manager/home.nix;
   homeDir = if darwin then "/Users/${user}" else "/home/${user}";

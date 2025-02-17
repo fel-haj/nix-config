@@ -25,5 +25,13 @@ in
         source = symlink "${dot}/aerospace";
       };
     })
+    (lib.mkIf (!darwin) {
+      "${conf}/hypr" = {
+        source = symlink "${dot}/wayland/hypr";
+      };
+      "${conf}/waybar" = {
+        source = symlink "${dot}/wayland/waybar";
+      };
+    })
   ];
 }

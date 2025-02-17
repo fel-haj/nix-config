@@ -27,7 +27,7 @@
   in {
     nixosConfigurations.nixos-desktop = mkSystem {
       system    = "x86_64-linux";
-      hostName  = "nixos-desktop";
+      hostName  = "desktop";
       user      = user;
       userEmail = userEmail;
     };

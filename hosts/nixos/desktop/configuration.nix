@@ -2,7 +2,8 @@
 {
   imports =
     [ 
-      ./nixos-default.nix
+      ../nixos-default.nix
+      ./hardware-configuration.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -13,12 +14,11 @@
 
   time.timeZone = "Europe/Amsterdam";
 
-  # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
+  #   useXkbConfig = true;
   # };
 
   # Enable CUPS to print documents.
@@ -27,10 +27,10 @@
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -43,36 +43,48 @@
   #   enableSSHSupport = true;
   # };
 
-  services.xserver = {
-    enable = true;
-
-    windowManager.i3 = {
-      enable = true;
-    };
-  };
-
-  services.displayManager = {
-    defaultSession = "none+i3";
-  };
-
-  # programs.hyprland = {
+  # services.xserver = {
   #   enable = true;
-  #   xwayland.enable = true;
+  #
+  #   windowManager.i3 = {
+  #     enable = true;
+  #   };
   # };
   #
-  # environment.sessionVariables = {
-  #   NIXOS_OZONE_WL = "1";
+  # services.displayManager = {
+  #   defaultSession = "none+i3";
   # };
-  #
-  # hardware = {
-  #   opengl.enable = true;
-  # };
-  #
+
+  programs = {
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+      # xwayland.enable = true;
+    };
+    # uwsm = {
+    #   waylandCompositors = {
+    #     hyprland = {
+    #       prettyName = "Hyprland";
+    #       comment = "Hyprland compositor managed by UWSM";
+    #       binPath = "/run/current-system/sw/bin/Hyprland";
+    #     };
+    #   };
+    # };
+  };
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+
   # xdg.portal = {
   #   enable = true;
   #   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   # };
   #
+  # hardware = {
+  #   graphics.enable = true;
+  # };
+
   # services.greetd = {
   #   enable = true;
   #   settings = {
@@ -91,17 +103,21 @@
     fontDir.enable = true;
 
     packages = with pkgs; [
+      font-awesome
       fira-code
-      jetbrains-mono
+      nerd-fonts.jetbrains-mono
     ];
   };
 
   environment = {
     systemPackages = with pkgs; [
-      # dunst
-      # libnotify
-      # rofi-wayland
-      # waybar
+      brightnessctl
+      dunst
+      hyprpaper
+      hyprpolkitagent
+      libnotify
+      rofi-wayland
+      waybar
     ];
   };
 
