@@ -16,7 +16,7 @@
 
     signing = {
       format = "ssh";
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEv1auuK81LyTEQulVtayIZG/jh6cHl/302LmxmEXXO6 78931101+fel-haj@users.noreply.github.com";
+      key = "~/.ssh/gh/${hostName}.pub";
       signByDefault = true;
     };
 
