@@ -48,13 +48,6 @@ in {
 
     syntaxHighlighting = {
       enable = true;
-      highlighters = [
-        "pattern"
-      ];
-      patterns = {
-        "$*" = "fg=magenta";
-        "$* " = "fg=magenta";
-      };
       styles = {
         alias = "fg=blue";
         builtin = "fg=blue";

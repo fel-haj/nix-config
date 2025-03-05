@@ -12,7 +12,7 @@
     packages = with pkgs; [
       # utils
       fzf
-      neovim
+      # neovim
       ripgrep
       tmux
 
@@ -22,7 +22,7 @@
       # devops
       terraform
     ] ++ (lib.optionals (darwin) [
-      # pam-reattach
+      powershell
     ]) ++ (lib.optionals (!darwin) [
       clang
       firefox
@@ -41,7 +41,7 @@
     home-manager.enable = true;
 
     neovim = {
-      # enable = true;
+      enable = true;
       defaultEditor = true;
       vimAlias = true;
     };

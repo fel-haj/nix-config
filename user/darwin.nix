@@ -40,7 +40,7 @@
 
     casks = [
       "aerospace"
-      "arc"
+      "firefox"
       "ghostty"
 
       "discord"
