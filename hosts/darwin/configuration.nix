@@ -1,7 +1,9 @@
-{ config, pkgs, system, hostName, ... }:
 {
-  networking.hostName = hostName;
-
+  imports =
+    [ 
+      ../../modules
+    ];
+  
   system = {
     stateVersion = 5;
 
@@ -42,17 +44,5 @@
   security.pam.services.sudo_local = { 
     enable = true;
     touchIdAuth = true;
-  };
-
-  fonts = {
-    packages = with pkgs; [
-      # icon fonts
-      material-design-icons
-      font-awesome
-
-      # nerd fonts 
-      nerd-fonts.symbols-only
-      nerd-fonts.jetbrains-mono
-    ];
   };
 }

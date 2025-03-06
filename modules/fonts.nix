@@ -1,4 +1,4 @@
-{ lib, pkgs, darwin, ... }
+{ lib, pkgs, darwin, ... }:
 {
   fonts = lib.mkMerge [
     {

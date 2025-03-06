@@ -73,8 +73,8 @@ in {
       WORDCHARS='~!#$%^&*(){}[]<>?.+;-'
 
       ${lib.optionalString (!darwin) ''
-        if uwsm check may-start; then
-          exec uwsm start hyprland
+        if uwsm check may-start > /dev/null && uwsm select; then
+          exec systemd-cat -t uwsm_start uwsm start default
         fi
 
         function rebuildx86() {

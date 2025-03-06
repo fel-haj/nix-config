@@ -1,3 +1,4 @@
+{ hostName, ... }:
 {
   networking = {
     hostName = hostName;

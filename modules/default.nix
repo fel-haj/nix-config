@@ -1,14 +1,14 @@
-{ lib, darwin, ... }
+{ lib, darwin, ... }:
 {
   imports = [
-    ./fonts.nix
-    ./network.nix
+    # ./fonts.nix
     ./settings.nix
-  ]  ++ (lib.optionals (darwin) [
-    ./homebrew.nix
-  ]  ++ (lib.optionals (!darwin) [
+  # ] ++ (lib.optionals (darwin) [
+  #   ./homebrew.nix
+  # ]) ++ (lib.optionals (!darwin) [
     ./hyprland.nix
-    ./stylix.nix
+    ./network.nix
     ./user.nix
   ];
+  # ]);
 }

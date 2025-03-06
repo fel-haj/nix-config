@@ -1,4 +1,4 @@
-{ config, lib, pkgs, hostName, ... }:
+{ config, lib, pkgs, ... }:
 {
   imports =
     [ 
@@ -33,15 +33,7 @@
 
   environment = {
     systemPackages = with pkgs; [
-      brightnessctl
-      dunst
-      hyprpaper
-      hyprlock
-      networkmanagerapplet
-      waybar
-      wl-clipboard
-      wlogout
-      wofi
+      vim
     ];
   };
 
