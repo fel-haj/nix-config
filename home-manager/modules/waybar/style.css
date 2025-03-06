@@ -1,0 +1,68 @@
+* {
+  border: none;
+  border-radius: 0px;
+  font-family: "JetBrains Mono";
+  font-weight: bold;
+  font-size: 16px;
+  min-height: 0;
+  color: #ffffff;
+}
+
+window#waybar {
+  background: #1d2021;
+}
+
+#workspaces button label{
+  padding: 0 10px;
+}
+#workspaces button.active label {
+}
+#workspaces button.active {
+  background: #d65d0e;
+}
+
+#clock, #battery, #pulseaudio, #tray, #language, #weather {
+  padding: 0 10px;
+  margin: 0 10px;
+}
+
+#language {
+  margin: 0;
+}
+
+#custom-weather {
+  margin: 0;
+}
+
+#pulseaudio {
+  margin: 0;
+  /*color: #ebdbb2;*/
+  /*color: #689d6a;*/
+  /*border-bottom: 5px solid #689d6a;*/
+}
+
+#pulseaudio.muted {
+  /*padding: 0 20px;*/
+  /*color: #cc241d;*/
+  /*border-bottom: 5px solid #cc241d;*/
+}
+
+#battery {
+  margin: 0;
+}
+
+#tray {
+  margin: 0;
+}
+
+#tray > .active {
+  margin: 0;
+}
+
+#tray > .needs-attention {
+  margin: 0;
+}
+
+#clock {
+  margin: 0;
+}

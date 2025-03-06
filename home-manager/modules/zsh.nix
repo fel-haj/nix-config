@@ -68,12 +68,21 @@ in {
       bindkey '^n' history-beginning-search-forward
       bindkey '^p' history-beginning-search-backward
       setopt ignore_eof
+
       # Remove / to not be part of words
       WORDCHARS='~!#$%^&*(){}[]<>?.+;-'
+
       ${lib.optionalString (!darwin) ''
-        if uwsm check may-start; then
-          exec uwsm start hyprland
+        # if uwsm check may-start; then
+        #   exec uwsm start hyprland.desktop
+        # fi
+        if uwsm check may-start > /dev/null && uwsm select; then
+          exec systemd-cat -t uwsm_start uwsm start default
         fi
+
+        function rebuildx86() {
+          sudo nixos-${flake-rebuild}#nixos-desktop
+        }
       ''}
     '';
   };
@@ -81,7 +90,8 @@ in {
   home.shellAliases = {
     ls = "eza";
     lt = "eza --tree --level=2";
-    rebuildx86 = if darwin then "darwin-${flake-rebuild}#macbook-x86" else "nixos-${flake-rebuild}#nixos-desktop";
+  } // lib.optionalAttrs darwin {
+    rebuildx86 = "darwin-${flake-rebuild}#macbook-x86";
     rebuild = "darwin-${flake-rebuild}#macbook-aarch64";
   };
 }
