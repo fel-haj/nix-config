@@ -1,22 +1,5 @@
 { config, pkgs, system, hostName, ... }:
 {
-  nix = {
-    settings.experimental-features = "nix-command flakes";
-    gc = {
-      automatic = true;
-      interval = [
-        {
-          Hour = 6;
-          Minute = 30;
-          Weekday = 7;
-        }
-      ];
-      options = "--delete-older-than 30d";
-    };
-  };
-
-  nixpkgs.hostPlatform = system;
-
   networking.hostName = hostName;
 
   system = {

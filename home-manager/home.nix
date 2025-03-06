@@ -4,7 +4,9 @@
     ./modules/git.nix
     ./modules/symlinks.nix
     ./modules/zsh.nix
-  ];
+  ] ++ (lib.optionals (!darwin) [
+    # ./modules/wayland.nix
+  ]);
 
   home = {
     stateVersion = "24.11";
@@ -12,7 +14,6 @@
     packages = with pkgs; [
       # utils
       fzf
-      # neovim
       ripgrep
       tmux
 
@@ -26,8 +27,8 @@
     ]) ++ (lib.optionals (!darwin) [
       clang
       firefox
-      ghostty
-      xclip
+      # ghostty
+      kitty
     ]);
 
     sessionPath = [
@@ -36,6 +37,8 @@
   };
 
   xdg.enable = true;
+  # programs.neovim creates below file - conflicts with symlink of nvim config
+  xdg.configFile."nvim/init.lua".enable = false;
 
   programs = {
     home-manager.enable = true;

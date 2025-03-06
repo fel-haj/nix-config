@@ -1,14 +1,12 @@
-{ nixpkgs, inputs,  ... }:
+{ nixpkgs, inputs, user,  ... }:
 {
   system,
   hostName,
-  user,
   darwin ? false,
 }:
 
 let
   hostConfig = ../hosts/${if darwin then "darwin" else "nixos/${hostName}"}/configuration.nix;
-  userOSConfig = ../user/${if darwin then "darwin" else "nixos"}.nix;
   userHMConfig = ../home-manager/home.nix;
   homeDir = if darwin then "/Users/${user}" else "/home/${user}";
 
@@ -21,7 +19,6 @@ in systemFunc rec {
     { nixpkgs.config.allowUnfree = true; }
 
     hostConfig
-    userOSConfig
     home-manager.home-manager {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
