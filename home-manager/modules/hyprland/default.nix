@@ -1,6 +1,8 @@
 {
   imports = [
     ./binds.nix
+    ./hypridle.nix
+    ./hyprlock.nix
   ];
   wayland.windowManager.hyprland = {
     enable = true;
@@ -11,29 +13,27 @@
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
         "QT_QPA_PLATFORM,wayland"
-        "XDG_SCREENSHOTS_DIR,$HOME/screens"
+        "XDG_SCREENSHOTS_DIR,$HOME/Pictures/Screenshots"
       ];
 
-      monitor = ",1920x1080@60,auto,1";
+      monitor = ",1600x900@60,auto,1";
       "$mainMod" = "SUPER";
       "$terminal" = "ghostty";
-      "$fileManager" = "$terminal -e sh -c 'yazi'";
+      # "$fileManager" = "$terminal -e sh -c 'yazi'";
+      "$fileManager" = "nautilus";
       "$menu" = "wofi";
 
       exec-once = [
-        "waybar"
+        "waybar & nm-applet"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
       ];
 
       general = {
-        gaps_in = 0;
-        gaps_out = 0;
+        gaps_in = 5;
+        gaps_out = 5;
 
         border_size = 5;
-
-        # "col.active_border" = "rgba(d65d0eff) rgba(98971aff) 45deg";
-        # "col.inactive_border" = "rgba(3c3836ff)";
 
         resize_on_border = true;
 
@@ -42,7 +42,8 @@
       };
 
       decoration = {
-        rounding = 0;
+        rounding = 5;
+        rounding_power = 2;
 
         active_opacity = 1.0;
         inactive_opacity = 1.0;
@@ -61,8 +62,14 @@
       };
 
       input = {
-        kb_layout = "us,ru,il";
+        kb_layout = "us,de";
         kb_options = "grp:caps_toggle";
+
+        natural_scroll = true;
+
+        touchpad = {
+          scroll_factor = 0.5;
+        };
       };
 
       gestures = {

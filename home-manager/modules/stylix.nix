@@ -14,17 +14,17 @@
     polarity = "dark";
 
     targets = {
+      ghostty.enable = false;
+      hyprlock.enable = false;
       waybar.enable = false;
       wofi.enable = false;
-      # hyprland.enable = false;
-      hyprlock.enable = false;
     };
 
-    # cursor = {
-    #   name = "DMZ-Black";
-    #   size = 24;
-    #   package = pkgs.vanilla-dmz;
-    # };
+    cursor = {
+      name = "macOS";
+      size = 24;
+      package = pkgs.apple-cursor;
+    };
 
     fonts = {
       emoji = {
@@ -45,16 +45,15 @@
       };
 
       sizes = {
-        terminal = 15;
         applications = 12;
       };
     };
 
     iconTheme = {
       enable = true;
-      package = pkgs.papirus-icon-theme;
-      dark = "Papirus-Dark";
-      light = "Papirus-Light";
+      package = pkgs.whitesur-icon-theme;
+      dark = "WhiteSur-dark";
+      light = "WhiteSur-light";
     };
 
     image = pkgs.fetchurl {

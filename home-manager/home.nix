@@ -15,6 +15,7 @@
     ./modules/zsh.nix
   ] ++ (lib.optionals (!darwin) [
     ./modules/stylix.nix
+    ./modules/swaync.nix
     ./modules/hyprland
     ./modules/waybar
     ./modules/wofi

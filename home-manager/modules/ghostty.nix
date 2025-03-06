@@ -1,16 +1,11 @@
+{ darwin, ... }:
 {
-  # programs.ghostty creates files - conflicts with symlink
-  xdg.configFile."ghostty/config".enable = false;
-  # xdg.configFile."ghostty/themes/stylix".enable = false;
-
   programs.ghostty = {
     enable = true;
     enableZshIntegration = true;
 
     settings = {
-      theme = "light:catppuccin-latte,dark:catppuccin-mocha";
-
-      font-size = 16;
+      font-size = 14;
       cursor-style = "block";
       cursor-style-blink = false;
 
@@ -20,7 +15,13 @@
       background-blur-radius = 50;
 
       mouse-hide-while-typing = true;
+    } // (if darwin 
+    then {
       macos-option-as-alt = true;
-    };
+      theme = "light:catppuccin-latte,dark:catppuccin-mocha";
+    }
+    else {
+      theme = "catppuccin-mocha";
+    });
   };
 }

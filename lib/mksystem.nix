@@ -17,13 +17,11 @@ in systemFunc rec {
   inherit system;
 
   modules = [
-    { nixpkgs.config.allowUnfree = true; }
-
     hostConfig
     home-manager.home-manager {
       home-manager.users.${user} = import ../home-manager/home.nix;
       home-manager.extraSpecialArgs = {
-        inherit inputs user hostName darwin;
+        inherit user inputs hostName darwin;
       };
       users.users.${user}.home = homeDir;
     }
@@ -31,11 +29,10 @@ in systemFunc rec {
     # expose some extra arguments
     {
       config._module.args = {
-        inputs = inputs;
         user = user;
+        inputs = inputs;
         system = system;
         hostName = hostName;
-        darwin = darwin;
       };
     }
   ];

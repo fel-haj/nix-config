@@ -8,17 +8,25 @@
     ripgrep
     tmux
 
+    # collaboration
+    teams-for-linux
+    discord
+
     # dev
     nodejs_23
 
     # devops
     terraform
   ] ++ (lib.optionals (darwin) [
-    powershell
+
   ]) ++ (lib.optionals (!darwin) [
+    brightnessctl
     clang
     firefox
     ghostty
-    kitty
+    libnotify
+    nautilus
+    networkmanagerapplet
+    wl-clipboard
   ]);
 }

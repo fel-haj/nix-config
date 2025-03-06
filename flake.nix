@@ -1,5 +1,5 @@
 {
-  description = "NixOS & Nix-darwin flake configuration";
+  description = "NixOS & Nix-darwin configuration flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -23,12 +23,12 @@
   let
     user      = "felix";
     mkSystem = import ./lib/mksystem.nix {
-      inherit nixpkgs inputs user;
+      inherit nixpkgs user inputs;
     };
   in {
     nixosConfigurations.nixos-desktop = mkSystem {
       system    = "x86_64-linux";
-      hostName  = "desktop";
+      hostName  = "SG-NewSeries9";
     };
 
     darwinConfigurations.macbook-x86 = mkSystem {
