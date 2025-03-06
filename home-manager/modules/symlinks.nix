@@ -7,9 +7,6 @@ in
 {
   home.file = lib.mkMerge [
   {
-    "${conf}/ghostty" = {
-      source = symlink "${dot}/ghostty";
-    };
     "${conf}/nvim" = {
       source = symlink "${dot}/nvim";
     };

@@ -14,10 +14,9 @@
     polarity = "dark";
 
     targets = {
-      neovim.enable = false;
       waybar.enable = false;
       wofi.enable = false;
-      hyprland.enable = false;
+      # hyprland.enable = false;
       hyprlock.enable = false;
     };
 

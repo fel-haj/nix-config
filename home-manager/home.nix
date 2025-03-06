@@ -3,8 +3,9 @@
   imports = [
     ./packages.nix
 
-    # ./modules/direnv.nix
+    ./modules/direnv.nix
     ./modules/eza.nix
+    ./modules/ghostty.nix
     ./modules/git.nix
     ./modules/go.nix
     ./modules/neovim.nix
