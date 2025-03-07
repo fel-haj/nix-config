@@ -6,8 +6,7 @@
       "$mainMod  CTRL, Q, exit,"
       "$mainMod SHIFT, Q, exec, loginctl lock-session"
       "$mainMod,       R, exec, $fileManager"
-      "$mainMod,   SPACE, exec, $menu"
-      # "$mainMod,   SPACE, exec, $menu --show drun"
+      "$mainMod,   SPACE, exec, $menu --show drun"
       "$mainMod,       F, togglefloating,"
       "$mainMod,       P, pin,"
 

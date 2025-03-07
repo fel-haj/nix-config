@@ -8,10 +8,6 @@
     ripgrep
     tmux
 
-    # collaboration
-    teams-for-linux
-    discord
-
     # dev
     nodejs_23
 
@@ -20,10 +16,16 @@
   ] ++ (lib.optionals (darwin) [
 
   ]) ++ (lib.optionals (!darwin) [
-    brightnessctl
-    clang
+    # apps
+    discord
     firefox
-    ghostty
+    teams-for-linux
+
+    # utils
+    clang
+
+    # WM
+    brightnessctl
     libnotify
     nautilus
     networkmanagerapplet
